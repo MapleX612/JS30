@@ -1,4 +1,7 @@
-# 03 - Update CSS Variables with JS
+# 03 - Update CSS Variables with JS  
+
+**[Live Demo](https://maplex612.github.io/JS30/03%20-%20CSS%20Variables/index-MAPLE.html)**  
+
 ## 1. CSS custom properties (CSS variables)  
   
 Like variables in other languages, we can also use variables/custom properties in CSS.  

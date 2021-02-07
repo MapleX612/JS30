@@ -1,4 +1,6 @@
-# 01 - Drum Kit
+# 01 - Drum Kit  
+**[Live Demo](https://maplex612.github.io/JS30/01%20-%20JavaScript%20Drum%20Kit/index-MAPLE.html)**  
+
 ## 1. `data-*` attribute
 Global user-defined attribute in html element (HTML5).   
 E.g.  
