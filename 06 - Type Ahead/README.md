@@ -1,4 +1,7 @@
-# 06 - Ajax Type Ahead
+# 06 - Ajax Type Ahead  
+
+**[Live Demo](https://maplex612.github.io/JS30/06%20-%20Type%20Ahead/index-MAPLE.html)**  
+
 ## 1. `fetch` API  
 
 In this project, we need to make a http request to get data about cities and population. Previously, we use `XMLHttpRequest` to make requests to server asynchronously. Now, we can `fetch`.  
