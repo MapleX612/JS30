@@ -39,7 +39,7 @@
       if (hue == 360) hue = 0;
       ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
       //update line width, set the limit to [1, 100]
-      if(ctx.lineWidth == 100 || ctx.lineWidth == 1){
+      if (ctx.lineWidth == 100 || ctx.lineWidth == 1) {
         lineWidthUp = !lineWidthUp;
       }
       lineWidthUp ? ctx.lineWidth += 1 : ctx.lineWidth -= 1;
@@ -48,13 +48,13 @@
     }
 
     canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mousedown', () => { isDrawing = true; });
+    canvas.addEventListener('mousedown', (e) => {if (e.button == 0) isDrawing = true;});  //only draw when main button is pressed
     canvas.addEventListener('mouseup', () => { isDrawing = false; });
     canvas.addEventListener('mouseout', () => { isDrawing = false; }); // stop drawing when mouse is out of canvas
 
     // erase the canvas when button is clicked
     const clearBtn = document.querySelector('button');
-    clearBtn.addEventListener('click', (e) => {
+    clearBtn.addEventListener('click', () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
 
