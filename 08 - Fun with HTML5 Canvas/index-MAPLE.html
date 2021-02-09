@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+</head>
+
+<body>
+  <canvas id="draw" width="800" height="800"></canvas>
+  <button>Clear Canvas</button>
+
+  <script>
+    //get the canvas and rendering context to draw, set canvas size
+    const canvas = document.getElementById('draw');
+    const ctx = canvas.getContext('2d');
+    [canvas.width, canvas.height] = [window.innerWidth - 400, window.innerHeight - 200];
+
+    //set stroke style
+    let hue = 0;
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+    ctx.lineJoin = 'miter';
+    ctx.lineCap = 'square';
+    ctx.lineWidth = 1;
+
+    let isDrawing = false; //mark whether the mouse is down
+    let lineWidthUp = true; //mark if ctx.lineWidth needs to be increased or decreased
+
+    // draw when mouse is down and moves
+    function draw(e) {
+      //stop drawing if mouse is up
+      if (!isDrawing) return;
+      //set the path to draw
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX - e.movementX, e.offsetY - e.movementY);
+      ctx.lineTo(e.offsetX, e.offsetY);
+      //update line color
+      hue += 0.8;
+      if (hue == 360) hue = 0;
+      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+      //update line width, set the limit to [1, 100]
+      if(ctx.lineWidth == 100 || ctx.lineWidth == 1){
+        lineWidthUp = !lineWidthUp;
+      }
+      lineWidthUp ? ctx.lineWidth += 1 : ctx.lineWidth -= 1;
+      //draw
+      ctx.stroke();
+    }
+
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mousedown', () => { isDrawing = true; });
+    canvas.addEventListener('mouseup', () => { isDrawing = false; });
+    canvas.addEventListener('mouseout', () => { isDrawing = false; }); // stop drawing when mouse is out of canvas
+
+    // erase the canvas when button is clicked
+    const clearBtn = document.querySelector('button');
+    clearBtn.addEventListener('click', (e) => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+
+  </script>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+    }
+
+    /* keep the canvas center */
+    canvas {
+      position: absolute;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      border: 10px solid rgb(150, 103, 56);
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      left: 0;
+      margin: auto;
+      bottom: 30px;
+      width: 130px;
+      height: 35px;
+      font-family: American Typewriter;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      background: rgb(130, 148, 102);
+      color: white;
+    }
+
+    button:hover {
+      background: rgba(130, 148, 102, 80%);
+      color: white;
+      transition: 0.3s;
+    }
+  </style>
+
+</body>
+
+</html>
