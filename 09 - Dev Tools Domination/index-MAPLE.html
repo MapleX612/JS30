@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('Hello');
+
+    // Interpolated
+    console.log('Here is a sentence with interpolated value: %s.', 'INTERPOLATED');
+
+    // Styled
+    console.log('We can also style the text %c here.', 'color: gold; font-weight: 900');
+
+    // warning!
+    console.warn('Let\'s add a warning :D');
+
+    // Error :|
+    console.error('An artificial error o-o');
+
+    // Info
+    console.info('Some info...');
+
+    // Testing
+    console.assert(1 == 0, '1 == 0 is false, so this sentence shows up.');
+
+    // Viewing DOM Elements
+    const p = document.querySelector('p');
+    console.dir(p);
+
+    // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}.`);
+      console.log(`${dog.name} is ${dog.age} years old.`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+    console.count('A');
+    console.count('A');
+    console.count('B');
+    console.count('C');
+    console.count('A');
+    console.count('A');
+
+    // timing
+    console.time('Fetch data from my github page');
+    fetch('https://maplex612.github.io/JS30/06%20-%20Type%20Ahead/index-MAPLE.html')
+      .then(prom => {
+        console.timeEnd('Fetch data from my github page');
+        console.log(prom);
+      });
+
+    // clearing
+    //console.clear();
+
+    // display in a table
+    console.table(dogs);
+    console.table([1,2,3]);
+
+  </script>
+</body>
+
+</html>
