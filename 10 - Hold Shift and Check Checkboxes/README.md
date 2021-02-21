@@ -8,7 +8,7 @@ The `shiftKey` property exists in `MouseEvent`, `KeyboardEvent` and `TouchEvent`
 
 In `MouseEvent` and `KeyboardEvent`, `shiftKey` is `true` if the <kbd>shift</kbd> key was pressed when the event occurs.
 
-In this challenge, With this property, there is no need to listen to `keydown` and `keyup` events to detect when the shift key is pressed.
+In this challenge, with this property, there is no need to listen to `keydown` and `keyup` events to detect when the shift key is pressed.
   
 ## 2. Pass parameters into event listeners - encapsulate the actual listener with a anonymous function  
 
